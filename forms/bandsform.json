@@ -3,7 +3,7 @@
     "properties": {},
     "options": {
       "removeProperties": ["bidx", "variables"],
-      "cleanupIncompatibleProperties": true
+      "no_additional_properties": true
     },
     "oneOf": [
       {
