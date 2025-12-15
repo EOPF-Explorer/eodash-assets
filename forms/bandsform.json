@@ -355,7 +355,7 @@
             "type": "number",
             "minimum": -2,
             "maximum": 2,
-            "default": 0.25,
+            "default": 1,
             "format": "range"
           }
         },
