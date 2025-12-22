@@ -93,7 +93,7 @@
         "type": "object",
         "title": "Normalized Difference Indices",
         "options": {
-          "removeProperties": ["variables"]
+          "removeProperties": ["variables","color_formula"]
         },
         "properties": {
           "variables": {
@@ -192,7 +192,7 @@
         "type": "object",
         "title": "Spectral Ratio Indices",
         "options": {
-          "removeProperties": ["variables"]
+          "removeProperties": ["variables","color_formula"]
         },
         "properties": {
           "variables": {
