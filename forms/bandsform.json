@@ -2,7 +2,7 @@
   "jsonform": {
     "properties": {},
     "options": {
-      "removeProperties": ["bidx", "variables"],
+      "removeProperties": ["bidx", "variables","color_formula"],
       "no_additional_properties": true
     },
     "oneOf": [
@@ -21,6 +21,13 @@
           },
           "rescale": {
             "$ref": "#/definitions/rescale"
+          },
+          "color_formula": {
+            "type": "string",
+            "default": "gamma rgb 1.3, sigmoidal rgb 8 0.1, saturation 1.2",
+            "options":{
+              "hidden":true
+            }
           },
           "variables": {
             "title": "Custom Band Combination",
