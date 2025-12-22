@@ -22,11 +22,6 @@
           "rescale": {
             "$ref": "#/definitions/rescale"
           },
-          "color_formula": {
-            "type": "string",
-            "title": "Color Formula",
-            "default": "gamma rgb 1.3, sigmoidal rgb 8 0.1, saturation 1.2"
-          },
           "variables": {
             "title": "Custom Band Combination",
             "type": "array",
