@@ -1,0 +1,216 @@
+{
+    "variables": {
+        "gamma": 1.5,
+        "minRed": 0,
+        "maxRed": 0.5,
+        "minGreen": 0,
+        "maxGreen": 0.5,
+        "minBlue": 0,
+        "maxBlue": 0.5
+    },
+    "gamma": [
+        "var",
+        "gamma"
+    ],
+    "color": [
+        "color",
+        [
+            "interpolate",
+            [
+                "linear"
+            ],
+            [
+                "band",
+                1
+            ],
+            [
+                "var",
+                "minRed"
+            ],
+            0,
+            [
+                "var",
+                "maxRed"
+            ],
+            255
+        ],
+        [
+            "interpolate",
+            [
+                "linear"
+            ],
+            [
+                "band",
+                2
+            ],
+            [
+                "var",
+                "minGreen"
+            ],
+            0,
+            [
+                "var",
+                "maxGreen"
+            ],
+            255
+        ],
+        [
+            "interpolate",
+            [
+                "linear"
+            ],
+            [
+                "band",
+                3
+            ],
+            [
+                "var",
+                "minBlue"
+            ],
+            0,
+            [
+                "var",
+                "maxBlue"
+            ],
+            255
+        ]
+    ],
+    "jsonform": {
+        "type": "object",
+        "title": "Band Configuration",
+        "required": [
+            "bands"
+        ],
+        "properties": {
+            "bands": {
+                "title": "Band Combination",
+                "type": "array",
+                "format": "bands",
+                "default": [
+                    "b04",
+                    "b03",
+                    "b02"
+                ],
+                "items": {
+                    "type": "string",
+                    "enum": [
+                        "b01",
+                        "b02",
+                        "b03",
+                        "b04",
+                        "b05",
+                        "b06",
+                        "b07",
+                        "b08",
+                        "b09",
+                        "b11",
+                        "b12",
+                        "b8a"
+                    ],
+                    "options": {
+                        "enum_titles": [
+                            "B01",
+                            "B02",
+                            "B03",
+                            "B04",
+                            "B05",
+                            "B06",
+                            "B07",
+                            "B08",
+                            "B09",
+                            "B11",
+                            "B12",
+                            "B8A"
+                        ],
+                        "colors": [
+                            "#66CCFF",
+                            "#0070FF",
+                            "#00C800",
+                            "#FF0000",
+                            "#C00040",
+                            "#A00060",
+                            "#CC0088",
+                            "#CC33CC",
+                            "#9900FF",
+                            "#FF9900",
+                            "#8B4513",
+                            "#FF3366"
+                        ]
+                    }
+                }
+            },
+            "gamma": {
+                "type": "number",
+                "title": "Gamma Correction",
+                "minimum": 0,
+                "maximum": 5,
+                "step": 0.1,
+                "default": 1.5,
+                "format": "range"
+            },
+            "rescaleRed": {
+                "title": "Red Channel",
+                "type": "object",
+                "properties": {
+                    "minRed": {
+                        "type": "number",
+                        "minimum": 0,
+                        "maximum": 1,
+                        "format": "range",
+                        "default": 0
+                    },
+                    "maxRed": {
+                        "type": "number",
+                        "minimum": 0,
+                        "maximum": 1,
+                        "format": "range",
+                        "default": 0.5
+                    }
+                },
+                "format": "minmax"
+            },
+            "rescaleGreen": {
+                "title": "Green Channel",
+                "type": "object",
+                "properties": {
+                    "minGreen": {
+                        "type": "number",
+                        "minimum": 0,
+                        "maximum": 1,
+                        "format": "range",
+                        "default": 0
+                    },
+                    "maxGreen": {
+                        "type": "number",
+                        "minimum": 0,
+                        "maximum": 1,
+                        "format": "range",
+                        "default": 0.5
+                    }
+                },
+                "format": "minmax"
+            },
+            "rescaleBlue": {
+                "title": "Blue Channel",
+                "type": "object",
+                "properties": {
+                    "minBlue": {
+                        "type": "number",
+                        "minimum": 0,
+                        "maximum": 1,
+                        "format": "range",
+                        "default": 0
+                    },
+                    "maxBlue": {
+                        "type": "number",
+                        "minimum": 0,
+                        "maximum": 1,
+                        "format": "range",
+                        "default": 0.5
+                    }
+                },
+                "format": "minmax"
+            }
+        }
+    }
+}
