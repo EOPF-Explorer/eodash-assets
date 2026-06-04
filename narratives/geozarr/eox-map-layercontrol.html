@@ -18,8 +18,8 @@
     </div>
     
     <script type="module">
-        import "https://cdn.jsdelivr.net/npm/@eox/map@2.1.0-dev.1/dist/eox-map.js";
-        import "https://cdn.jsdelivr.net/npm/@eox/map@2.1.0-dev.1/dist/eox-map-advanced-layers-and-sources.js";
+        import "https://cdn.jsdelivr.net/npm/@eox/map@^2.4.0/dist/eox-map.js";
+        import "https://cdn.jsdelivr.net/npm/@eox/map@^2.4.0/dist/eox-map-advanced-layers-and-sources.js";
         import "https://cdn.jsdelivr.net/npm/@eox/layercontrol@latest/dist/eox-layercontrol.js";
         
         await customElements.whenDefined("eox-map");
@@ -50,8 +50,7 @@
                 },
                 "source": {
                     "type": "GeoZarr",
-                    "url": "https://s3.explorer.eopf.copernicus.eu/esa-zarr-sentinel-explorer-fra/tests-output/sentinel-2-l2a/S2A_MSIL2A_20251107T100231_N0511_R122_T32TQR_20251107T115310.zarr",
-                    "group": "measurements/reflectance",
+                    "url": "https://s3.explorer.eopf.copernicus.eu/esa-zarr-sentinel-explorer-fra/tests-output/sentinel-2-l2a/S2A_MSIL2A_20251107T100231_N0511_R122_T32TQR_20251107T115310.zarr/measurements/reflectance",
                     "bands": ["b04", "b03", "b02"]
                 },
                 "style": {
