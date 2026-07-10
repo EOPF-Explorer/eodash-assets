@@ -1,0 +1,190 @@
+{
+  "jsonform": {
+    "properties": {},
+    "options": {
+      "removeProperties": ["variables", "color_formula"],
+      "no_additional_properties": true
+    },
+    "oneOf": [
+      {
+        "type": "object",
+        "title": "SAR False Color (VV, VH, VV/VH)",
+        "properties": {
+          "orbit": { "$ref": "#/definitions/orbit" },
+          "bidx": { "$ref": "#/definitions/bidx" },
+          "rescale": {
+            "type": "array",
+            "items": { "type": "string" },
+            "default": ["0,0.4", "0,0.1", "1,15"],
+            "options": { "hidden": true }
+          },
+          "expression": {
+            "type": "string",
+            "format": "bands-arithmetic",
+            "formulaTemplate": "{{A}};{{B}};({{C}})/({{D}})",
+            "default": "/descending:vv;/descending:vh;(/descending:vv)/(/descending:vh)",
+            "title": "Composite Bands",
+            "watch": { "orbit": "orbit" },
+            "enum": ["/{{orbit}}:vv", "/{{orbit}}:vh"],
+            "options": {
+              "enum_titles": ["VV", "VH"],
+              "colors": ["#003170", "#00ae9d"],
+              "defaultVariables": {
+                "A": "/{{orbit}}:vv",
+                "B": "/{{orbit}}:vh",
+                "C": "/{{orbit}}:vv",
+                "D": "/{{orbit}}:vh"
+              }
+            }
+          }
+        },
+        "required": ["orbit", "expression", "rescale", "bidx"]
+      },
+      {
+        "type": "object",
+        "title": "Cross-Ratio (VH/VV)",
+        "properties": {
+          "orbit": { "$ref": "#/definitions/orbit" },
+          "colormap_name": {
+            "type": "string",
+            "title": "Colormap Name",
+            "default": "viridis",
+            "enum": ["viridis", "gray", "rdylgn", "coolwarm"]
+          },
+          "rescale": { "$ref": "#/definitions/rescale" },
+          "rescaleminmax": {
+            "$ref": "#/definitions/rescaleminmax",
+            "default": { "min": 0, "max": 1 }
+          },
+          "bidx": { "$ref": "#/definitions/bidx" },
+          "expression": {
+            "type": "string",
+            "format": "bands-arithmetic",
+            "formulaTemplate": "({{A}})/({{B}})",
+            "default": "(/descending:vh)/(/descending:vv)",
+            "title": "Band Arithmetic Expression",
+            "watch": { "orbit": "orbit" },
+            "enum": ["/{{orbit}}:vv", "/{{orbit}}:vh"],
+            "options": {
+              "enum_titles": ["VV", "VH"],
+              "colors": ["#003170", "#00ae9d"],
+              "defaultVariables": {
+                "A": "/{{orbit}}:vh",
+                "B": "/{{orbit}}:vv"
+              }
+            }
+          }
+        },
+        "required": ["orbit", "expression", "colormap_name", "rescale", "rescaleminmax", "bidx"]
+      },
+      {
+        "type": "object",
+        "title": "Single Polarization",
+        "properties": {
+          "orbit": { "$ref": "#/definitions/orbit" },
+          "colormap_name": {
+            "type": "string",
+            "title": "Colormap Name",
+            "default": "gray",
+            "enum": ["gray", "viridis", "inferno"]
+          },
+          "rescale": { "$ref": "#/definitions/rescale" },
+          "rescaleminmax": {
+            "$ref": "#/definitions/rescaleminmax",
+            "default": { "min": 0, "max": 0.4 }
+          },
+          "bidx": { "$ref": "#/definitions/bidx" },
+          "expression": {
+            "type": "string",
+            "format": "bands-arithmetic",
+            "formulaTemplate": "{{A}}",
+            "default": "/descending:vv",
+            "title": "Polarization",
+            "watch": { "orbit": "orbit" },
+            "enum": ["/{{orbit}}:vv", "/{{orbit}}:vh"],
+            "options": {
+              "enum_titles": ["VV", "VH"],
+              "colors": ["#003170", "#00ae9d"],
+              "defaultVariables": { "A": "/{{orbit}}:vv" }
+            }
+          }
+        },
+        "required": ["orbit", "expression", "colormap_name", "rescale", "rescaleminmax", "bidx"]
+      }
+    ],
+    "definitions": {
+      "orbit": {
+        "type": "string",
+        "title": "Orbit Direction",
+        "default": "descending",
+        "enum": ["descending", "ascending"],
+        "options": { "enum_titles": ["Descending", "Ascending"] }
+      },
+      "bidx": {
+        "type": "string",
+        "default": "1",
+        "const": "1",
+        "options": { "hidden": true }
+      },
+      "rescaleminmax": {
+        "type": "object",
+        "title": "Rescale",
+        "format": "minmax",
+        "properties": {
+          "min": {
+            "type": "number",
+            "minimum": 0,
+            "maximum": 2,
+            "default": 0,
+            "format": "range"
+          },
+          "max": {
+            "type": "number",
+            "minimum": 0,
+            "maximum": 2,
+            "default": 1,
+            "format": "range"
+          }
+        }
+      },
+      "rescale": {
+        "type": "string",
+        "watch": { "rescaleminmax": "rescaleminmax" },
+        "template": "{{rescaleminmax.min}},{{rescaleminmax.max}}",
+        "options": { "hidden": true }
+      }
+    }
+  },
+  "legend": [
+    {
+      "title": "VH/VV",
+      "rangeProperty": "colormap_name",
+      "domainProperties": ["min", "max"],
+      "boundTo": { "key": "colormap_name", "value": "viridis" }
+    },
+    {
+      "title": "Backscatter",
+      "rangeProperty": "colormap_name",
+      "domainProperties": ["min", "max"],
+      "boundTo": { "key": "colormap_name", "value": "gray" }
+    },
+    {
+      "title": "Colormap",
+      "rangeProperty": "colormap_name",
+      "domainProperties": ["min", "max"],
+      "boundTo": { "key": "colormap_name", "value": "rdylgn" }
+    },
+    {
+      "title": "Colormap",
+      "rangeProperty": "colormap_name",
+      "domainProperties": ["min", "max"],
+      "boundTo": { "key": "colormap_name", "value": "coolwarm" }
+    },
+    {
+      "title": "Colormap",
+      "rangeProperty": "colormap_name",
+      "domainProperties": ["min", "max"],
+      "boundTo": { "key": "colormap_name", "value": "inferno" }
+    }
+  ]
+}
