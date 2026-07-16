@@ -38,12 +38,12 @@
             "type": "string",
             "format": "bands-arithmetic",
             "formulaTemplate": "{{A}};{{B}};({{C}})/({{D}})",
-            "default": "/{{orbit}}:vv;/{{orbit}}:vh;(/{{orbit}}:vv)/(/{{orbit}}:vh)",
+            "default": "/ascending:vv;/ascending:vh;(/ascending:vv)/(/ascending:vh)",
             "title": "Composite Bands",
             "options": {
               "enum": [
-                "/{{orbit}}:vv",
-                "/{{orbit}}:vh"
+                "/ascending:vv",
+                "/ascending:vh"
               ],
               "enum_titles": [
                 "VV",
@@ -54,10 +54,10 @@
                 "#00ae9d"
               ],
               "defaultVariables": {
-                "A": "/{{orbit}}:vv",
-                "B": "/{{orbit}}:vh",
-                "C": "/{{orbit}}:vv",
-                "D": "/{{orbit}}:vh"
+                "A": "/ascending:vv",
+                "B": "/ascending:vh",
+                "C": "/ascending:vv",
+                "D": "/ascending:vh"
               }
             }
           }
@@ -95,12 +95,12 @@
             "type": "string",
             "format": "bands-arithmetic",
             "formulaTemplate": "({{A}})/({{B}})",
-            "default": "(/{{orbit}}:vh)/(/{{orbit}}:vv)",
+            "default": "(/ascending:vh)/(/ascending:vv)",
             "title": "Band Arithmetic Expression",
             "options": {
               "enum": [
-                "/{{orbit}}:vv",
-                "/{{orbit}}:vh"
+                "/ascending:vv",
+                "/ascending:vh"
               ],
               "enum_titles": [
                 "VV",
@@ -111,8 +111,8 @@
                 "#00ae9d"
               ],
               "defaultVariables": {
-                "A": "/{{orbit}}:vh",
-                "B": "/{{orbit}}:vv"
+                "A": "/ascending:vh",
+                "B": "/ascending:vv"
               }
             }
           }
@@ -149,12 +149,12 @@
             "type": "string",
             "format": "bands-arithmetic",
             "formulaTemplate": "{{A}}",
-            "default": "/{{orbit}}:vv",
+            "default": "/ascending:vv",
             "title": "Polarization",
             "options": {
               "enum": [
-                "/{{orbit}}:vv",
-                "/{{orbit}}:vh"
+                "/ascending:vv",
+                "/ascending:vh"
               ],
               "enum_titles": [
                 "VV",
@@ -165,7 +165,7 @@
                 "#00ae9d"
               ],
               "defaultVariables": {
-                "A": "/{{orbit}}:vv"
+                "A": "/ascending:vv"
               }
             }
           }
