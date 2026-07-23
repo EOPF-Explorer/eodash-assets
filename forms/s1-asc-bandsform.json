@@ -5,7 +5,8 @@
       "removeProperties": [
         "colormap_name"
       ],
-      "no_additional_properties": true
+      "no_additional_properties": true,
+      "persist_state": false
     },
     "anyOf": [
       {
