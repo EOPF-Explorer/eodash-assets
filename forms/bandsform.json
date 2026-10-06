@@ -2,15 +2,16 @@
   "jsonform": {
     "properties": {},
     "options": {
-      "removeProperties": ["bidx", "variables","color_formula"],
-      "no_additional_properties": true
+      "removeProperties": ["bidx", "band_selection", "band_expression", "color_formula"],
+      "no_additional_properties": true,
+      "keep_oneof_values": false
     },
     "oneOf": [
       {
         "type": "object",
         "title": "RGB Band Combination",
         "options": {
-          "removeProperties": ["expression", "colormap_name"]
+          "removeProperties": ["band_expression", "colormap_name"]
         },
         "properties": {
           "bidx": {
@@ -29,30 +30,29 @@
               "hidden":true
             }
           },
-          "variables": {
+          "assets": {
+            "$ref": "#/definitions/assetsFromBands"
+          },
+          "band_selection": {
             "title": "Custom Band Combination",
             "type": "array",
             "format": "bands",
-            "default": [
-              "/measurements/reflectance:b04",
-              "/measurements/reflectance:b03",
-              "/measurements/reflectance:b02"
-            ],
+            "default": ["b04", "b03", "b02"],
             "items": {
               "type": "string",
               "enum": [
-                "/measurements/reflectance:b01",
-                "/measurements/reflectance:b02",
-                "/measurements/reflectance:b03",
-                "/measurements/reflectance:b04",
-                "/measurements/reflectance:b05",
-                "/measurements/reflectance:b06",
-                "/measurements/reflectance:b07",
-                "/measurements/reflectance:b08",
-                "/measurements/reflectance:b8a",
-                "/measurements/reflectance:b09",
-                "/measurements/reflectance:b11",
-                "/measurements/reflectance:b12"
+                "b01",
+                "b02",
+                "b03",
+                "b04",
+                "b05",
+                "b06",
+                "b07",
+                "b08",
+                "b8a",
+                "b09",
+                "b11",
+                "b12"
               ],
               "options": {
                 "enum_titles": [
@@ -87,20 +87,23 @@
             }
           }
         },
-        "required": ["variables", "rescale", "rescaleminmax", "bidx"]
+        "required": ["assets", "band_selection", "rescale", "rescaleminmax", "bidx"]
       },
       {
         "type": "object",
         "title": "Normalized Difference Indices",
         "options": {
-          "removeProperties": ["variables","color_formula"]
+          "removeProperties": ["band_selection","color_formula"]
         },
         "properties": {
-          "variables": {
+          "band_selection": {
             "type": "array",
             "options": {
               "hidden": true
             }
+          },
+          "assets": {
+            "$ref": "#/definitions/assetsFromExpression"
           },
           "colormap_name": {
             "type": "string",
@@ -128,25 +131,25 @@
           "bidx": {
             "$ref": "#/definitions/bidx"
           },
-          "expression": {
+          "band_expression": {
             "type": "string",
             "format": "bands-arithmetic",
             "formulaTemplate": "({{A}}-{{B}})/({{A}}+{{B}})",
-            "default": "(/measurements/reflectance:b8a−/measurements/reflectance:b04) / (/measurements/reflectance:b8a+/measurements/reflectance:b04)",
+            "default": "(b8a-b04)/(b8a+b04)",
             "title": "Band Arithmetic Expression",
             "enum": [
-              "/measurements/reflectance:b01",
-              "/measurements/reflectance:b02",
-              "/measurements/reflectance:b03",
-              "/measurements/reflectance:b04",
-              "/measurements/reflectance:b05",
-              "/measurements/reflectance:b06",
-              "/measurements/reflectance:b07",
-              "/measurements/reflectance:b08",
-              "/measurements/reflectance:b8a",
-              "/measurements/reflectance:b09",
-              "/measurements/reflectance:b11",
-              "/measurements/reflectance:b12"
+              "b01",
+              "b02",
+              "b03",
+              "b04",
+              "b05",
+              "b06",
+              "b07",
+              "b08",
+              "b8a",
+              "b09",
+              "b11",
+              "b12"
             ],
             "options": {
               "enum_titles": [
@@ -181,7 +184,8 @@
           }
         },
         "required": [
-          "expression",
+          "assets",
+          "band_expression",
           "colormap_name",
           "rescale",
           "rescaleminmax",
@@ -192,14 +196,17 @@
         "type": "object",
         "title": "Spectral Ratio Indices",
         "options": {
-          "removeProperties": ["variables","color_formula"]
+          "removeProperties": ["band_selection","color_formula"]
         },
         "properties": {
-          "variables": {
+          "band_selection": {
             "type": "array",
             "options": {
               "hidden": true
             }
+          },
+          "assets": {
+            "$ref": "#/definitions/assetsFromExpression"
           },
           "colormap_name": {
             "type": "string",
@@ -228,24 +235,25 @@
           "bidx": {
             "$ref": "#/definitions/bidx"
           },
-          "expression": {
+          "band_expression": {
             "type": "string",
             "format": "bands-arithmetic",
             "formulaTemplate": "({{A}})/({{B}})",
+            "default": "(b08)/(b04)",
             "title": "Band Arithmetic Expression",
             "enum": [
-              "/measurements/reflectance:b01",
-              "/measurements/reflectance:b02",
-              "/measurements/reflectance:b03",
-              "/measurements/reflectance:b04",
-              "/measurements/reflectance:b05",
-              "/measurements/reflectance:b06",
-              "/measurements/reflectance:b07",
-              "/measurements/reflectance:b08",
-              "/measurements/reflectance:b8a",
-              "/measurements/reflectance:b09",
-              "/measurements/reflectance:b11",
-              "/measurements/reflectance:b12"
+              "b01",
+              "b02",
+              "b03",
+              "b04",
+              "b05",
+              "b06",
+              "b07",
+              "b08",
+              "b8a",
+              "b09",
+              "b11",
+              "b12"
             ],
             "options": {
               "enum_titles": [
@@ -280,7 +288,8 @@
           }
         },
         "required": [
-          "expression",
+          "assets",
+          "band_expression",
           "colormap_name",
           "rescale",
           "rescaleminmax",
@@ -289,20 +298,40 @@
       }
     ],
     "definitions": {
+      "assetsFromBands": {
+        "type": "string",
+        "watch": {
+          "band_selection": "band_selection"
+        },
+        "template": "reflectance|bands={{band_selection}}",
+        "options": {
+          "hidden": true
+        }
+      },
+      "assetsFromExpression": {
+        "type": "string",
+        "watch": {
+          "band_expression": "band_expression"
+        },
+        "template": "reflectance|expression={{band_expression}}",
+        "options": {
+          "hidden": true
+        }
+      },
       "bandOptions": {
         "enum": [
-          "/measurements/reflectance:b01",
-          "/measurements/reflectance:b02",
-          "/measurements/reflectance:b03",
-          "/measurements/reflectance:b04",
-          "/measurements/reflectance:b05",
-          "/measurements/reflectance:b06",
-          "/measurements/reflectance:b07",
-          "/measurements/reflectance:b08",
-          "/measurements/reflectance:b8a",
-          "/measurements/reflectance:b09",
-          "/measurements/reflectance:b11",
-          "/measurements/reflectance:b12"
+          "b01",
+          "b02",
+          "b03",
+          "b04",
+          "b05",
+          "b06",
+          "b07",
+          "b08",
+          "b8a",
+          "b09",
+          "b11",
+          "b12"
         ],
         "options": {
           "enum_titles": [
