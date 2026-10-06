@@ -6,6 +6,7 @@
         "colormap_name"
       ],
       "no_additional_properties": true,
+      "keep_oneof_values": false,
       "persist_state": false
     },
     "anyOf": [

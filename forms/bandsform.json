@@ -3,7 +3,8 @@
     "properties": {},
     "options": {
       "removeProperties": ["bidx", "band_selection", "band_expression", "color_formula"],
-      "no_additional_properties": true
+      "no_additional_properties": true,
+      "keep_oneof_values": false
     },
     "oneOf": [
       {
@@ -238,6 +239,7 @@
             "type": "string",
             "format": "bands-arithmetic",
             "formulaTemplate": "({{A}})/({{B}})",
+            "default": "(b08)/(b04)",
             "title": "Band Arithmetic Expression",
             "enum": [
               "b01",
