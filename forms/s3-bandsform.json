@@ -1,0 +1,249 @@
+{
+  "jsonform": {
+    "title": "Band Configuration",
+    "type": "object",
+    "options": {
+      "no_additional_properties": true
+    },
+    "required": [
+      "variables",
+      "gamma",
+      "saturation",
+      "contrast",
+      "rescaleRed",
+      "rescaleGreen",
+      "rescaleBlue",
+      "rescale",
+      "color_formula",
+      "bidx"
+    ],
+    "properties": {
+      "variables": {
+        "title": "Band Combination",
+        "type": "array",
+        "format": "bands",
+        "items": {
+          "type": "string",
+          "enum": [
+            "/measurements/r0:oa01_radiance",
+            "/measurements/r0:oa02_radiance",
+            "/measurements/r0:oa03_radiance",
+            "/measurements/r0:oa04_radiance",
+            "/measurements/r0:oa05_radiance",
+            "/measurements/r0:oa06_radiance",
+            "/measurements/r0:oa07_radiance",
+            "/measurements/r0:oa08_radiance",
+            "/measurements/r0:oa09_radiance",
+            "/measurements/r0:oa10_radiance",
+            "/measurements/r0:oa11_radiance",
+            "/measurements/r0:oa12_radiance",
+            "/measurements/r0:oa13_radiance",
+            "/measurements/r0:oa14_radiance",
+            "/measurements/r0:oa15_radiance",
+            "/measurements/r0:oa16_radiance",
+            "/measurements/r0:oa17_radiance",
+            "/measurements/r0:oa18_radiance",
+            "/measurements/r0:oa19_radiance",
+            "/measurements/r0:oa20_radiance",
+            "/measurements/r0:oa21_radiance"
+          ],
+          "options": {
+            "enum_titles": [
+              "Oa01",
+              "Oa02",
+              "Oa03",
+              "Oa04",
+              "Oa05",
+              "Oa06",
+              "Oa07",
+              "Oa08",
+              "Oa09",
+              "Oa10",
+              "Oa11",
+              "Oa12",
+              "Oa13",
+              "Oa14",
+              "Oa15",
+              "Oa16",
+              "Oa17",
+              "Oa18",
+              "Oa19",
+              "Oa20",
+              "Oa21"
+            ],
+            "colors": [
+              "#AA00FF",
+              "#7500FF",
+              "#000DFF",
+              "#00FFFF",
+              "#00FF00",
+              "#B6FF00",
+              "#FF6200",
+              "#FF0000",
+              "#FF0000",
+              "#FF0000",
+              "#C10048",
+              "#C80070",
+              "#C90077",
+              "#CA007A",
+              "#CA007D",
+              "#CC0087",
+              "#CC2BC2",
+              "#C82FD0",
+              "#BD24DB",
+              "#A007F8",
+              "#8B4513"
+            ]
+          }
+        }
+      },
+      "gamma": {
+        "type": "number",
+        "title": "Gamma",
+        "format": "range",
+        "minimum": 0.5,
+        "maximum": 3,
+        "step": 0.1,
+        "default": 1.3
+      },
+      "saturation": {
+        "type": "number",
+        "title": "Saturation",
+        "format": "range",
+        "minimum": 0,
+        "maximum": 2,
+        "step": 0.05,
+        "default": 1.2
+      },
+      "contrast": {
+        "type": "number",
+        "title": "Contrast",
+        "format": "range",
+        "minimum": 0,
+        "maximum": 20,
+        "step": 0.5,
+        "default": 6
+      },
+      "rescaleRed": {
+        "title": "Red Channel",
+        "type": "object",
+        "format": "minmax",
+        "properties": {
+          "minRed": {
+            "type": "number",
+            "format": "range",
+            "minimum": 0,
+            "maximum": 500,
+            "step": 1,
+            "default": 10
+          },
+          "maxRed": {
+            "type": "number",
+            "format": "range",
+            "minimum": 0,
+            "maximum": 500,
+            "step": 1,
+            "default": 300
+          }
+        }
+      },
+      "rescaleGreen": {
+        "title": "Green Channel",
+        "type": "object",
+        "format": "minmax",
+        "properties": {
+          "minGreen": {
+            "type": "number",
+            "format": "range",
+            "minimum": 0,
+            "maximum": 500,
+            "step": 1,
+            "default": 22
+          },
+          "maxGreen": {
+            "type": "number",
+            "format": "range",
+            "minimum": 0,
+            "maximum": 500,
+            "step": 1,
+            "default": 345
+          }
+        }
+      },
+      "rescaleBlue": {
+        "title": "Blue Channel",
+        "type": "object",
+        "format": "minmax",
+        "properties": {
+          "minBlue": {
+            "type": "number",
+            "format": "range",
+            "minimum": 0,
+            "maximum": 500,
+            "step": 1,
+            "default": 36
+          },
+          "maxBlue": {
+            "type": "number",
+            "format": "range",
+            "minimum": 0,
+            "maximum": 500,
+            "step": 1,
+            "default": 390
+          }
+        }
+      },
+      "rescale": {
+        "type": "array",
+        "minItems": 3,
+        "maxItems": 3,
+        "items": [
+          {
+            "type": "string",
+            "watch": {
+              "r": "rescaleRed"
+            },
+            "template": "{{r.minRed}},{{r.maxRed}}"
+          },
+          {
+            "type": "string",
+            "watch": {
+              "g": "rescaleGreen"
+            },
+            "template": "{{g.minGreen}},{{g.maxGreen}}"
+          },
+          {
+            "type": "string",
+            "watch": {
+              "b": "rescaleBlue"
+            },
+            "template": "{{b.minBlue}},{{b.maxBlue}}"
+          }
+        ],
+        "options": {
+          "hidden": true
+        }
+      },
+      "color_formula": {
+        "type": "string",
+        "watch": {
+          "g": "gamma",
+          "s": "saturation",
+          "c": "contrast"
+        },
+        "template": "gamma rgb {{g}}, sigmoidal rgb {{c}} 0.1, saturation {{s}}",
+        "options": {
+          "hidden": true
+        }
+      },
+      "bidx": {
+        "type": "string",
+        "const": "1",
+        "default": "1",
+        "options": {
+          "hidden": true
+        }
+      }
+    }
+  }
+}
