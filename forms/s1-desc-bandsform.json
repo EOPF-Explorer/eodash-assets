@@ -4,6 +4,7 @@
     "properties": {},
     "options": {
       "no_additional_properties": true,
+      "keep_oneof_values": false,
       "persist_state": false
     },
     "anyOf": [
@@ -37,12 +38,12 @@
             "type": "string",
             "format": "bands-arithmetic",
             "formulaTemplate": "{{A}};{{B}};({{C}})/({{D}})",
-            "default": "/${properties.sat:orbit_state}:vv;/${properties.sat:orbit_state}:vh;(/${properties.sat:orbit_state}:vv)/(/${properties.sat:orbit_state}:vh)",
+            "default": "b1;b2;(b1)/(b2)",
             "title": "Composite Bands",
             "options": {
               "enum": [
-                "/${properties.sat:orbit_state}:vv",
-                "/${properties.sat:orbit_state}:vh"
+                "b1",
+                "b2"
               ],
               "enum_titles": [
                 "VV",
@@ -53,13 +54,13 @@
                 "#00ae9d"
               ],
               "defaultVariables": {
-                "A": "/${properties.sat:orbit_state}:vv",
-                "B": "/${properties.sat:orbit_state}:vh",
-                "C": "/${properties.sat:orbit_state}:vv",
-                "D": "/${properties.sat:orbit_state}:vh"
+                "A": "b1",
+                "B": "b2",
+                "C": "b1",
+                "D": "b2"
               }
             },
-            "pattern": "^/${properties.sat:orbit_state}:[^;]+;/${properties.sat:orbit_state}:[^;]+;.+$"
+            "pattern": "^b[12];b[12];.+$"
           }
         }
       },
@@ -95,12 +96,12 @@
             "type": "string",
             "format": "bands-arithmetic",
             "formulaTemplate": "({{A}})/({{B}})",
-            "default": "(/${properties.sat:orbit_state}:vh)/(/${properties.sat:orbit_state}:vv)",
+            "default": "(b2)/(b1)",
             "title": "Band Arithmetic Expression",
             "options": {
               "enum": [
-                "/${properties.sat:orbit_state}:vv",
-                "/${properties.sat:orbit_state}:vh"
+                "b1",
+                "b2"
               ],
               "enum_titles": [
                 "VV",
@@ -111,11 +112,11 @@
                 "#00ae9d"
               ],
               "defaultVariables": {
-                "A": "/${properties.sat:orbit_state}:vh",
-                "B": "/${properties.sat:orbit_state}:vv"
+                "A": "b2",
+                "B": "b1"
               }
             },
-            "pattern": "^\\(/${properties.sat:orbit_state}:[^)]+\\)/\\(/${properties.sat:orbit_state}:[^)]+\\)$"
+            "pattern": "^\\(b[12]\\)/\\(b[12]\\)$"
           }
         }
       },
@@ -150,12 +151,12 @@
             "type": "string",
             "format": "bands-arithmetic",
             "formulaTemplate": "{{A}}",
-            "default": "/${properties.sat:orbit_state}:vv",
+            "default": "b1",
             "title": "Polarization",
             "options": {
               "enum": [
-                "/${properties.sat:orbit_state}:vv",
-                "/${properties.sat:orbit_state}:vh"
+                "b1",
+                "b2"
               ],
               "enum_titles": [
                 "VV",
@@ -166,10 +167,10 @@
                 "#00ae9d"
               ],
               "defaultVariables": {
-                "A": "/${properties.sat:orbit_state}:vv"
+                "A": "b1"
               }
             },
-            "pattern": "^/${properties.sat:orbit_state}:(vv|vh)$"
+            "pattern": "^b[12]$"
           }
         }
       }
