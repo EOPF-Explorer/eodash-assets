@@ -381,6 +381,85 @@
                 "default": 15
               }
             }
+          },
+          "polarization": {
+            "$ref": "#/definitions/formula",
+            "type": "string",
+            "title": "Polarization",
+            "formulaTemplate": "{{A}}",
+            "default": "vv",
+            "options": {
+              "defaultVariables": {
+                "A": "vv"
+              },
+              "hidden": true
+            }
+          },
+          "range": {
+            "type": "object",
+            "title": "Range",
+            "format": "minmax",
+            "properties": {
+              "min": {
+                "$ref": "#/definitions/range",
+                "type": "number",
+                "minimum": 0,
+                "maximum": 1,
+                "step": 0.005,
+                "default": 0
+              },
+              "max": {
+                "$ref": "#/definitions/range",
+                "type": "number",
+                "minimum": 0,
+                "maximum": 1,
+                "step": 0.005,
+                "default": 0.4
+              }
+            },
+            "options": {
+              "hidden": true
+            }
+          },
+          "ratio": {
+            "$ref": "#/definitions/formula",
+            "type": "string",
+            "title": "Ratio",
+            "formulaTemplate": "({{A}})/({{B}})",
+            "default": "(vh)/(vv)",
+            "options": {
+              "defaultVariables": {
+                "A": "vh",
+                "B": "vv"
+              },
+              "hidden": true
+            }
+          },
+          "crossRatioRange": {
+            "type": "object",
+            "title": "Ratio range",
+            "format": "minmax",
+            "properties": {
+              "minCrossRatio": {
+                "$ref": "#/definitions/range",
+                "type": "number",
+                "minimum": 0,
+                "maximum": 2,
+                "step": 0.01,
+                "default": 0
+              },
+              "maxCrossRatio": {
+                "$ref": "#/definitions/range",
+                "type": "number",
+                "minimum": 0,
+                "maximum": 2,
+                "step": 0.01,
+                "default": 1
+              }
+            },
+            "options": {
+              "hidden": true
+            }
           }
         }
       },
@@ -444,6 +523,164 @@
                 "step": 0.005,
                 "default": 0.4
               }
+            }
+          },
+          "composite": {
+            "$ref": "#/definitions/formula",
+            "type": "string",
+            "title": "Composite Bands",
+            "formulaTemplate": "{{A}};{{B}};({{C}})/({{D}})",
+            "default": "vv;vh;(vv)/(vh)",
+            "options": {
+              "defaultVariables": {
+                "A": "vv",
+                "B": "vh",
+                "C": "vv",
+                "D": "vh"
+              },
+              "hidden": true
+            }
+          },
+          "B": {
+            "$ref": "#/definitions/position",
+            "type": "integer",
+            "default": 2,
+            "options": {
+              "hidden": true
+            }
+          },
+          "C": {
+            "$ref": "#/definitions/position",
+            "type": "integer",
+            "default": 1,
+            "options": {
+              "hidden": true
+            }
+          },
+          "D": {
+            "$ref": "#/definitions/position",
+            "type": "integer",
+            "default": 2,
+            "options": {
+              "hidden": true
+            }
+          },
+          "rangeA": {
+            "type": "object",
+            "title": "Red (A)",
+            "format": "minmax",
+            "properties": {
+              "minA": {
+                "$ref": "#/definitions/range",
+                "type": "number",
+                "minimum": 0,
+                "maximum": 0.5,
+                "step": 0.005,
+                "default": 0
+              },
+              "maxA": {
+                "$ref": "#/definitions/range",
+                "type": "number",
+                "minimum": 0,
+                "maximum": 0.5,
+                "step": 0.005,
+                "default": 0.4
+              }
+            },
+            "options": {
+              "hidden": true
+            }
+          },
+          "rangeB": {
+            "type": "object",
+            "title": "Green (B)",
+            "format": "minmax",
+            "properties": {
+              "minB": {
+                "$ref": "#/definitions/range",
+                "type": "number",
+                "minimum": 0,
+                "maximum": 0.5,
+                "step": 0.005,
+                "default": 0
+              },
+              "maxB": {
+                "$ref": "#/definitions/range",
+                "type": "number",
+                "minimum": 0,
+                "maximum": 0.5,
+                "step": 0.005,
+                "default": 0.1
+              }
+            },
+            "options": {
+              "hidden": true
+            }
+          },
+          "rangeRatio": {
+            "type": "object",
+            "title": "Blue (C/D)",
+            "format": "minmax",
+            "properties": {
+              "minRatio": {
+                "$ref": "#/definitions/range",
+                "type": "number",
+                "minimum": 0,
+                "maximum": 30,
+                "step": 0.5,
+                "default": 1
+              },
+              "maxRatio": {
+                "$ref": "#/definitions/range",
+                "type": "number",
+                "minimum": 0,
+                "maximum": 30,
+                "step": 0.5,
+                "default": 15
+              }
+            },
+            "options": {
+              "hidden": true
+            }
+          },
+          "ratio": {
+            "$ref": "#/definitions/formula",
+            "type": "string",
+            "title": "Ratio",
+            "formulaTemplate": "({{A}})/({{B}})",
+            "default": "(vh)/(vv)",
+            "options": {
+              "defaultVariables": {
+                "A": "vh",
+                "B": "vv"
+              },
+              "hidden": true
+            }
+          },
+          "crossRatioRange": {
+            "type": "object",
+            "title": "Ratio range",
+            "format": "minmax",
+            "properties": {
+              "minCrossRatio": {
+                "$ref": "#/definitions/range",
+                "type": "number",
+                "minimum": 0,
+                "maximum": 2,
+                "step": 0.01,
+                "default": 0
+              },
+              "maxCrossRatio": {
+                "$ref": "#/definitions/range",
+                "type": "number",
+                "minimum": 0,
+                "maximum": 2,
+                "step": 0.01,
+                "default": 1
+              }
+            },
+            "options": {
+              "hidden": true
             }
           }
         }
@@ -514,6 +751,155 @@
                 "step": 0.01,
                 "default": 1
               }
+            }
+          },
+          "composite": {
+            "$ref": "#/definitions/formula",
+            "type": "string",
+            "title": "Composite Bands",
+            "formulaTemplate": "{{A}};{{B}};({{C}})/({{D}})",
+            "default": "vv;vh;(vv)/(vh)",
+            "options": {
+              "defaultVariables": {
+                "A": "vv",
+                "B": "vh",
+                "C": "vv",
+                "D": "vh"
+              },
+              "hidden": true
+            }
+          },
+          "C": {
+            "$ref": "#/definitions/position",
+            "type": "integer",
+            "default": 1,
+            "options": {
+              "hidden": true
+            }
+          },
+          "D": {
+            "$ref": "#/definitions/position",
+            "type": "integer",
+            "default": 2,
+            "options": {
+              "hidden": true
+            }
+          },
+          "rangeA": {
+            "type": "object",
+            "title": "Red (A)",
+            "format": "minmax",
+            "properties": {
+              "minA": {
+                "$ref": "#/definitions/range",
+                "type": "number",
+                "minimum": 0,
+                "maximum": 0.5,
+                "step": 0.005,
+                "default": 0
+              },
+              "maxA": {
+                "$ref": "#/definitions/range",
+                "type": "number",
+                "minimum": 0,
+                "maximum": 0.5,
+                "step": 0.005,
+                "default": 0.4
+              }
+            },
+            "options": {
+              "hidden": true
+            }
+          },
+          "rangeB": {
+            "type": "object",
+            "title": "Green (B)",
+            "format": "minmax",
+            "properties": {
+              "minB": {
+                "$ref": "#/definitions/range",
+                "type": "number",
+                "minimum": 0,
+                "maximum": 0.5,
+                "step": 0.005,
+                "default": 0
+              },
+              "maxB": {
+                "$ref": "#/definitions/range",
+                "type": "number",
+                "minimum": 0,
+                "maximum": 0.5,
+                "step": 0.005,
+                "default": 0.1
+              }
+            },
+            "options": {
+              "hidden": true
+            }
+          },
+          "rangeRatio": {
+            "type": "object",
+            "title": "Blue (C/D)",
+            "format": "minmax",
+            "properties": {
+              "minRatio": {
+                "$ref": "#/definitions/range",
+                "type": "number",
+                "minimum": 0,
+                "maximum": 30,
+                "step": 0.5,
+                "default": 1
+              },
+              "maxRatio": {
+                "$ref": "#/definitions/range",
+                "type": "number",
+                "minimum": 0,
+                "maximum": 30,
+                "step": 0.5,
+                "default": 15
+              }
+            },
+            "options": {
+              "hidden": true
+            }
+          },
+          "polarization": {
+            "$ref": "#/definitions/formula",
+            "type": "string",
+            "title": "Polarization",
+            "formulaTemplate": "{{A}}",
+            "default": "vv",
+            "options": {
+              "defaultVariables": {
+                "A": "vv"
+              },
+              "hidden": true
+            }
+          },
+          "range": {
+            "type": "object",
+            "title": "Range",
+            "format": "minmax",
+            "properties": {
+              "min": {
+                "$ref": "#/definitions/range",
+                "type": "number",
+                "minimum": 0,
+                "maximum": 1,
+                "step": 0.005,
+                "default": 0
+              },
+              "max": {
+                "$ref": "#/definitions/range",
+                "type": "number",
+                "minimum": 0,
+                "maximum": 1,
+                "step": 0.005,
+                "default": 0.4
+              }
+            },
+            "options": {
+              "hidden": true
             }
           }
         }
