@@ -133,7 +133,7 @@
             "type": "string",
             "format": "bands-arithmetic",
             "formulaTemplate": "({{A}}-{{B}})/({{A}}+{{B}})",
-            "default": "(/measurements/reflectance:b8a−/measurements/reflectance:b04) / (/measurements/reflectance:b8a+/measurements/reflectance:b04)",
+            "default": "(/measurements/reflectance:b8a-/measurements/reflectance:b04) / (/measurements/reflectance:b8a+/measurements/reflectance:b04)",
             "title": "Band Arithmetic Expression",
             "enum": [
               "/measurements/reflectance:b01",
