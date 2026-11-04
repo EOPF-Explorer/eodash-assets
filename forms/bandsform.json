@@ -1,5 +1,6 @@
 {
   "jsonform": {
+    "title": "Visualization",
     "properties": {},
     "options": {
       "removeProperties": ["bidx", "band_selection", "band_expression", "color_formula"],
