@@ -5,7 +5,8 @@
     "options": {
       "removeProperties": ["bidx", "band_selection", "band_expression", "color_formula"],
       "no_additional_properties": true,
-      "keep_oneof_values": false
+      "keep_oneof_values": false,
+      "persist_state": false
     },
     "oneOf": [
       {
