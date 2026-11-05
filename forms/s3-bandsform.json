@@ -3,10 +3,12 @@
     "title": "Band Configuration",
     "type": "object",
     "options": {
+      "removeProperties": ["band_selection"],
       "no_additional_properties": true
     },
     "required": [
-      "variables",
+      "assets",
+      "band_selection",
       "gamma",
       "saturation",
       "contrast",
@@ -18,34 +20,45 @@
       "bidx"
     ],
     "properties": {
-      "variables": {
+      "assets": {
+        "type": "string",
+        "watch": {
+          "band_selection": "band_selection"
+        },
+        "template": "radianceData|variables={{band_selection}}",
+        "options": {
+          "hidden": true
+        }
+      },
+      "band_selection": {
         "title": "Band Combination",
         "type": "array",
         "format": "bands",
+        "default": ["oa08_radiance", "oa06_radiance", "oa04_radiance"],
         "items": {
           "type": "string",
           "enum": [
-            "/measurements/r0:oa01_radiance",
-            "/measurements/r0:oa02_radiance",
-            "/measurements/r0:oa03_radiance",
-            "/measurements/r0:oa04_radiance",
-            "/measurements/r0:oa05_radiance",
-            "/measurements/r0:oa06_radiance",
-            "/measurements/r0:oa07_radiance",
-            "/measurements/r0:oa08_radiance",
-            "/measurements/r0:oa09_radiance",
-            "/measurements/r0:oa10_radiance",
-            "/measurements/r0:oa11_radiance",
-            "/measurements/r0:oa12_radiance",
-            "/measurements/r0:oa13_radiance",
-            "/measurements/r0:oa14_radiance",
-            "/measurements/r0:oa15_radiance",
-            "/measurements/r0:oa16_radiance",
-            "/measurements/r0:oa17_radiance",
-            "/measurements/r0:oa18_radiance",
-            "/measurements/r0:oa19_radiance",
-            "/measurements/r0:oa20_radiance",
-            "/measurements/r0:oa21_radiance"
+            "oa01_radiance",
+            "oa02_radiance",
+            "oa03_radiance",
+            "oa04_radiance",
+            "oa05_radiance",
+            "oa06_radiance",
+            "oa07_radiance",
+            "oa08_radiance",
+            "oa09_radiance",
+            "oa10_radiance",
+            "oa11_radiance",
+            "oa12_radiance",
+            "oa13_radiance",
+            "oa14_radiance",
+            "oa15_radiance",
+            "oa16_radiance",
+            "oa17_radiance",
+            "oa18_radiance",
+            "oa19_radiance",
+            "oa20_radiance",
+            "oa21_radiance"
           ],
           "options": {
             "enum_titles": [

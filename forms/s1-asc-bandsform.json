@@ -7,6 +7,7 @@
         "colormap_name"
       ],
       "no_additional_properties": true,
+      "keep_oneof_values": false,
       "persist_state": false
     },
     "anyOf": [
@@ -40,12 +41,12 @@
             "type": "string",
             "format": "bands-arithmetic",
             "formulaTemplate": "{{A}};{{B}};({{C}})/({{D}})",
-            "default": "/ascending:vv;/ascending:vh;(/ascending:vv)/(/ascending:vh)",
+            "default": "b1;b2;(b1)/(b2)",
             "title": "Composite Bands",
             "options": {
               "enum": [
-                "/ascending:vv",
-                "/ascending:vh"
+                "b1",
+                "b2"
               ],
               "enum_titles": [
                 "VV",
@@ -56,10 +57,10 @@
                 "#00ae9d"
               ],
               "defaultVariables": {
-                "A": "/ascending:vv",
-                "B": "/ascending:vh",
-                "C": "/ascending:vv",
-                "D": "/ascending:vh"
+                "A": "b1",
+                "B": "b2",
+                "C": "b1",
+                "D": "b2"
               }
             }
           }
@@ -97,12 +98,12 @@
             "type": "string",
             "format": "bands-arithmetic",
             "formulaTemplate": "({{A}})/({{B}})",
-            "default": "(/ascending:vh)/(/ascending:vv)",
+            "default": "(b2)/(b1)",
             "title": "Band Arithmetic Expression",
             "options": {
               "enum": [
-                "/ascending:vv",
-                "/ascending:vh"
+                "b1",
+                "b2"
               ],
               "enum_titles": [
                 "VV",
@@ -113,8 +114,8 @@
                 "#00ae9d"
               ],
               "defaultVariables": {
-                "A": "/ascending:vh",
-                "B": "/ascending:vv"
+                "A": "b2",
+                "B": "b1"
               }
             }
           }
@@ -151,12 +152,12 @@
             "type": "string",
             "format": "bands-arithmetic",
             "formulaTemplate": "{{A}}",
-            "default": "/ascending:vv",
+            "default": "b1",
             "title": "Polarization",
             "options": {
               "enum": [
-                "/ascending:vv",
-                "/ascending:vh"
+                "b1",
+                "b2"
               ],
               "enum_titles": [
                 "VV",
@@ -167,7 +168,7 @@
                 "#00ae9d"
               ],
               "defaultVariables": {
-                "A": "/ascending:vv"
+                "A": "b1"
               }
             }
           }
