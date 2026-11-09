@@ -138,21 +138,21 @@
             "formulaTemplate": "({{A}}-{{B}})/({{A}}+{{B}})",
             "default": "(b8a-b04)/(b8a+b04)",
             "title": "Band Arithmetic Expression",
-            "enum": [
-              "b01",
-              "b02",
-              "b03",
-              "b04",
-              "b05",
-              "b06",
-              "b07",
-              "b08",
-              "b8a",
-              "b09",
-              "b11",
-              "b12"
-            ],
             "options": {
+              "enum": [
+                "b01",
+                "b02",
+                "b03",
+                "b04",
+                "b05",
+                "b06",
+                "b07",
+                "b08",
+                "b8a",
+                "b09",
+                "b11",
+                "b12"
+              ],
               "enum_titles": [
                 "B01",
                 "B02",
@@ -242,21 +242,21 @@
             "formulaTemplate": "({{A}})/({{B}})",
             "default": "(b08)/(b04)",
             "title": "Band Arithmetic Expression",
-            "enum": [
-              "b01",
-              "b02",
-              "b03",
-              "b04",
-              "b05",
-              "b06",
-              "b07",
-              "b08",
-              "b8a",
-              "b09",
-              "b11",
-              "b12"
-            ],
             "options": {
+              "enum": [
+                "b01",
+                "b02",
+                "b03",
+                "b04",
+                "b05",
+                "b06",
+                "b07",
+                "b08",
+                "b8a",
+                "b09",
+                "b11",
+                "b12"
+              ],
               "enum_titles": [
                 "B01",
                 "B02",
