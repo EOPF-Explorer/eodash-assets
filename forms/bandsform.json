@@ -7,7 +7,7 @@
       "no_additional_properties": true,
       "keep_oneof_values": false
     },
-    "oneOf": [
+    "anyOf": [
       {
         "type": "object",
         "title": "RGB Band Combination",
